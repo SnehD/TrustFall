@@ -2,7 +2,7 @@
 
 Automated: `backend/tests/test_trustfall.py` (31), `web/tests/engine.test.js` (16). Run per `README.md`. Results in `TEST_RESULTS.md`.
 
-Manual checklist for Quest / emulator (all currently UNEXECUTED):
+Emulator-automated (done): see `web/tests/browser_test.py`. Manual checklist for a PHYSICAL Quest (UNEXECUTED; items marked ✔emu were already passed in IWER):
 - [ ] Page loads over HTTPS; Enter VR appears and starts a session.
 - [ ] Hand tracking: `S.inputMode` banner text changes to "Hand tracking".
 - [ ] Pinch on: Begin, building, graph node, each tab, each recovery button.

@@ -1,0 +1,147 @@
+[
+  {
+    "name": "D1 app boots with onboarding visible",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "name": "D2 click Begin dismisses onboarding",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "name": "D3 click Payments building selects service + graph node",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "name": "D4 click graph node 'change' selects it",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "name": "D5 neighbours stay opaque, others dim",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "name": "D6 click VERIFY tab",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "name": "D7 tamper test reports INVALID",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "name": "D8 tamper did not alter real state (EV-003 still VERIFIED, scope production)",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "name": "D9 live verification: EV-007 MISSING, EV-001..006 VERIFIED",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "name": "D10 isolate: outage persists",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "name": "D11 restore resolves, city healthy",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "name": "D12 3D building turned green after recovery",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "name": "D13 recovery buttons disabled after resolve",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "name": "D14 report reflects resolved state",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "name": "D15 trace steps visit 6 nodes then wraps",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "name": "D16 input label is honest (desktop mouse, not hand tracking)",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "name": "D17 no console/JS errors (desktop)",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "name": "X1 IWER Quest 3 emulator reports immersive-vr supported",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "name": "X2 'Enter VR' button present",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "name": "X3 XR session started (emulated)",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "name": "X4 input sources detected as hand-tracking",
+    "pass": true,
+    "detail": "['hand-pinch', 'hand-pinch']"
+  },
+  {
+    "name": "X5 UI reports hand tracking input",
+    "pass": true,
+    "detail": "Hand tracking (pinch to select, or poke with index finger)"
+  },
+  {
+    "name": "X6a pinch at empty space changes nothing",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "name": "X6b pinch ray at Payments building selects payments-api",
+    "pass": true,
+    "detail": "ray origin [-0.02500000037252903, 1.0012500286102295, -0.30000001192092896] target (-0.025, 0.9812500000000001)"
+  },
+  {
+    "name": "X6c pinch ray at Config Store building selects config-store (different target, different result)",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "name": "X6d pinch ray at graph node 'policy' selects it",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "name": "X6e pinch ray at right-panel AI tab switches tab",
+    "pass": true,
+    "detail": "AI"
+  },
+  {
+    "name": "X7 fingertip poke through VERIFY tab button selects it",
+    "pass": true,
+    "detail": "{'rtab': 'VERIFY', 'tipErr': 5.8796955496334555e-08}"
+  },
+  {
+    "name": "X8 no console/JS errors in XR session",
+    "pass": true,
+    "detail": ""
+  }
+]

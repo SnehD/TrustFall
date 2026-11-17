@@ -52,7 +52,7 @@ async function boot() {
   if (params.get('tamper')) await runTamper();
   refreshWorld(); redrawAll();
   renderer.setAnimationLoop(tick);
-  window.__tf = { engine, S, select: selectNode };
+  window.__tf = { engine, S, select: selectNode, THREE, camera, renderer, bld, gnodes, panels, xr, pickables };
 }
 
 function initScene() {
@@ -105,7 +105,7 @@ function setupXRInput() {
   for (let i = 0; i < 2; i++) {
     const c = renderer.xr.getController(i); scene.add(c);
     c.userData.kind = 'unknown';
-    c.addEventListener('connected', (e) => { c.userData.kind = e.data.hand ? 'hand-pinch' : 'controller'; updateInputLabel(); });
+    c.addEventListener('connected', (e) => { c.userData.kind = e.data.hand ? 'hand-pinch' : 'controller'; c.userData.handedness = e.data.handedness; updateInputLabel(); });
     c.addEventListener('disconnected', () => { c.userData.kind = 'unknown'; updateInputLabel(); });
     c.addEventListener('select', () => { const r = rayOf(c); activateFrom(r); });
     const line = new THREE.Mesh(new THREE.CylinderGeometry(0.0015, 0.0015, 1, 6), new THREE.MeshBasicMaterial({ color: 0x22d3ee, transparent: true, opacity: 0.5 }));

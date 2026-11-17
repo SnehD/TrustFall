@@ -8,8 +8,8 @@
 | AI validation + deterministic fallback | IMPLEMENTED AND TESTED |
 | AI via external provider (Anthropic) | IMPLEMENTED BUT NOT TESTED (no key / no live call) |
 | Jenkins connector | IMPLEMENTED, mock-tested; NOT verified against live Jenkins |
-| 3D city, graph, panels, desktop interaction | IMPLEMENTED; rendered in Edge, click paths exercised via URL state, not by manual mouse test |
-| Hand pinch-ray and fingertip-poke input in XR | IMPLEMENTED BUT NOT TESTED (never run in an XR session or emulator) |
+| 3D city, graph, panels, desktop interaction | IMPLEMENTED AND TESTED with real mouse events in Edge (17 checks) |
+| Hand pinch-ray and fingertip-poke input in XR | IMPLEMENTED AND TESTED in Meta IWER emulated Quest 3 (29 browser checks); NOT tested on a physical headset |
 | Quest performance (72/90 FPS) | NOT MEASURED |
 | Sound | Minimal generated tones; IMPLEMENTED BUT NOT TESTED in XR |
 | Report export in headset | Browser download; behaviour in Quest Browser UNVERIFIED |

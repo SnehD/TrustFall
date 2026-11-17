@@ -2,7 +2,7 @@
 
 A hands-first WebXR workspace (Meta Quest Browser) for investigating an incident caused by an AI agent. A miniature 3D infrastructure city shows service health; a spatial evidence graph connects the agent, the change, the outage, the policy and the recovery; cryptographic verification is kept strictly separate from authorization.
 
-> **Status:** working vertical slice, tested on desktop (Edge) only. **Not yet tested on a Quest headset or in the Immersive Web Emulator.** No APK exists. See `Docs/LIMITATIONS.md`.
+> **Status:** working vertical slice, tested on desktop (Edge) and in Meta's IWER emulated Quest 3 (hand pinch + poke). **Not yet tested on a physical Quest headset.** No APK exists. See `Docs/LIMITATIONS.md`.
 
 Screenshots (desktop dev render, not headset footage): `Submission/screenshots/dev-*.png`.
 Placeholders still needed: `Submission/screenshots/quest-*.png` (real headset/emulator captures).
@@ -45,6 +45,8 @@ URL params for scripted views: `?onboard=0&sel=service|change|agent&rtab=VERIFY|
 ```powershell
 cd backend ; python -m pytest -q          # 31 tests
 node web/tests/engine.test.js             # 16 tests
+# browser + emulated-XR tests (needs Edge, `pip install websockets`, web/ served on :8765)
+python web/tests/browser_test.py          # 29 checks
 ```
 Results: `Docs/TEST_RESULTS.md`.
 

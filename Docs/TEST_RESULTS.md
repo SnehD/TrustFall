@@ -8,6 +8,11 @@ Run 2026-11-17. Environment: Windows 11, Python 3.13.0, pytest 9.1.1, Node v12.1
 | Backend (verification, policy, scenario, recovery, AI, report, connector) | `cd backend; python -m pytest -v` | 31 pass | 31 passed in 2.60 s | PASS |
 | Web engine logic (state, recovery, graph, report) | `node web/tests/engine.test.js` | 16 pass | 16 passed, 0 failed | PASS |
 
+| Browser interaction (real mouse events via DevTools Protocol, Edge headless) | `python web/tests/browser_test.py` | 17 pass | D1–D17 all PASS | PASS |
+| Emulated Quest 3 XR session (Meta IWER 2.8.0, `forceInstall`) with emulated hand input | same script, `web/xr-test.html` | 12 pass | X1–X8 (incl. X6a–e) all PASS: session starts; hands detected; pinch ray selects building / other building / graph node / panel tab; pinch at empty space does nothing; fingertip poke presses a panel button; no JS errors | PASS (emulator only) |
+
+Combined: 31 + 16 + 29 = **76 automated checks run, 76 passed, 0 failed.**
+
 ## Required cases → tests
 | Requirement | Test | Result |
 |---|---|---|
@@ -37,7 +42,7 @@ Run 2026-11-17. Environment: Windows 11, Python 3.13.0, pytest 9.1.1, Node v12.1
 | Build validation | N/A — static site, no build step. No APK produced. |
 
 ## Not tested (unresolved)
-- **Any Quest headset run, Immersive Web Emulator run, or XR session.** The XR input code (pinch ray, fingertip poke, hand models) has never executed in an XR session.
+- **A physical Quest headset.** XR input code (pinch ray, fingertip poke) DID run in Meta's IWER emulated Quest 3 and passed, but IWER is an emulator: real hand-tracking noise, pinch thresholds, comfort, legibility and Quest Browser quirks remain untested. Note: the emulator frame loop ran at ~4-5 frames/s on this software-rendered headless setup; that says nothing about Quest performance.
 - **Performance / frame rate**: not measured. Headless software rendering is not representative. No FPS claim is made.
 - Live Jenkins connector, live AI provider call.
 - Browsers without WebCrypto Ed25519 (Quest Browser support unverified; precomputed fallback is used and labelled).
