@@ -51,8 +51,8 @@ async function boot() {
   if (params.get('verify')) await runVerify();
   if (params.get('tamper')) await runTamper();
   refreshWorld(); redrawAll();
-  renderer.setAnimationLoop(tick);
-  window.__tf = { engine, S, select: selectNode, THREE, camera, renderer, bld, gnodes, panels, xr, pickables };
+  if (params.get('clock') !== 'manual') renderer.setAnimationLoop(tick);
+  window.__tf = { tick, engine, S, select: selectNode, THREE, camera, renderer, bld, gnodes, panels, xr, pickables };
 }
 
 function initScene() {

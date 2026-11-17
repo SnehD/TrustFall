@@ -8,3 +8,5 @@ node_modules/
 .venv/
 tools/out/
 .hypothesis/
+
+Submission/demo/*.mp4

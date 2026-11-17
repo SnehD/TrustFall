@@ -14,7 +14,7 @@
 | Sound | Minimal generated tones; IMPLEMENTED BUT NOT TESTED in XR |
 | Report export in headset | Browser download; behaviour in Quest Browser UNVERIFIED |
 | Quest APK / store packaging | NOT IMPLEMENTED |
-| Demo video | NOT PRODUCED (no recording/encoding tools, no headset/emulator session) |
+| Demo video | PRODUCED (2:53, scripted desktop render of the real app, female TTS voice, captions); NOT headset or emulator footage; NOT uploaded |
 | Recovery | SIMULATED only |
 | Multiple incidents, multiplayer, Kubernetes | NOT IMPLEMENTED |
 

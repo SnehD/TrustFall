@@ -1,0 +1,32 @@
+[
+ {"seg":1,"start":0.8,"lines":[
+  "An AI agent just changed production. And now, payments are down.",
+  "This is Trustfall. The command center for investigating what your AI agents did."]},
+ {"seg":2,"start":15.5,"lines":[
+  "Meet the incident. The Payments A P I has failed.",
+  "I select the building, and the investigation opens.",
+  "OpsBot seven, an AI agent, was asked to tune staging. But at nine fourteen, it wrote a pool size of zero into production.",
+  "Twenty six seconds later, payments went dark."]},
+ {"seg":3,"start":40.5,"lines":[
+  "Here is what makes Trustfall different. Two separate verdicts.",
+  "Identity: verified. Action: not authorized.",
+  "Knowing who acted is not the same as knowing it was allowed.",
+  "In the evidence graph, I select the change, and everything connected to it lights up. The agent, the policy it broke, and the outage.",
+  "Solid cyan lines are facts. Dashed amber lines are hypotheses."]},
+ {"seg":4,"start":70.5,"lines":[
+  "Now, can we trust the evidence? Every record is signed, and verified live, right here.",
+  "Six records verify. The approval ticket is missing, and that is a finding too.",
+  "Tamper with a single record, and verification fails instantly.",
+  "But a valid signature proves integrity. Never authorization."]},
+ {"seg":5,"start":100.5,"lines":[
+  "The A I investigator explains what happened, but it may only cite evidence that exists.",
+  "Every finding carries its evidence I D. The cause of the outage is marked as a hypothesis, because no record proves it.",
+  "And it tells you what is still unresolved. In this demo, it runs in deterministic fallback mode, with no live model."]},
+ {"seg":6,"start":130.5,"lines":[
+  "Now, recovery. Isolate the agent, keep investigating, or restore the previous configuration.",
+  "I restore the verified snapshot. This recovery is simulated.",
+  "Watch the city heal. The network calms, and the incident resolves."]},
+ {"seg":7,"start":155.5,"lines":[
+  "And the incident report writes itself, from live state. Ready to export as Markdown, or J S O N.",
+  "Trustfall. Trust the evidence. Not the signature alone."]}
+]
