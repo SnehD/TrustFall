@@ -1,0 +1,14 @@
+{
+  "evidence_id": "EV-004",
+  "type": "monitor.outage",
+  "timestamp": "2026-11-17T09:14:51Z",
+  "actor": "monitoring",
+  "payload": {
+    "service": "payments-api",
+    "state": "failed",
+    "symptom": "connection pool size 0; requests rejected",
+    "since": "2026-11-17T09:14:48Z"
+  },
+  "signing_key_id": "key-monitor-1",
+  "signature": "47kECIlBwB5cSvjrhAFIy+1F9oTOj9CN2mbNTdD+Nd2qn10O9QhDRyoy7fmsZOLXCRMcF8mUKfNqaQxNyz9LAg=="
+}

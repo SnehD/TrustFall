@@ -1,0 +1,106 @@
+{
+  "incident_id": "INC-2026-1117-001",
+  "title": "UNAUTHORIZED AGENT CONFIGURATION CHANGE",
+  "services": {
+    "edge-gateway": {
+      "label": "Edge Gateway",
+      "depends_on": [
+        "auth-service",
+        "payments-api",
+        "orders-service"
+      ]
+    },
+    "auth-service": {
+      "label": "Auth Service",
+      "depends_on": []
+    },
+    "config-store": {
+      "label": "Config Store",
+      "depends_on": []
+    },
+    "payments-api": {
+      "label": "Payments API",
+      "depends_on": [
+        "config-store"
+      ]
+    },
+    "orders-service": {
+      "label": "Orders Service",
+      "depends_on": [
+        "payments-api"
+      ]
+    },
+    "analytics": {
+      "label": "Analytics",
+      "depends_on": [
+        "orders-service"
+      ]
+    }
+  },
+  "timeline": [
+    {
+      "id": "T1",
+      "time": "2026-11-17T09:00:00Z",
+      "text": "AI agent OpsBot-7 receives a staging tuning task",
+      "evidence": [
+        "EV-001"
+      ]
+    },
+    {
+      "id": "T2",
+      "time": "2026-11-17T09:00:05Z",
+      "text": "Agent identity recorded and attested",
+      "evidence": [
+        "EV-002"
+      ]
+    },
+    {
+      "id": "T3",
+      "time": "2026-11-17T09:14:22Z",
+      "text": "Agent writes payments.pool.max_connections=0 in PRODUCTION",
+      "evidence": [
+        "EV-003"
+      ]
+    },
+    {
+      "id": "T4",
+      "time": "2026-11-17T09:14:22Z",
+      "text": "Change exceeds agent's granted scope (staging only)",
+      "evidence": [
+        "EV-003",
+        "EV-005"
+      ]
+    },
+    {
+      "id": "T5",
+      "time": "2026-11-17T09:14:48Z",
+      "text": "payments-api becomes unavailable",
+      "evidence": [
+        "EV-004"
+      ]
+    },
+    {
+      "id": "T6",
+      "time": "2026-11-17T09:14:51Z",
+      "text": "Monitoring records the outage",
+      "evidence": [
+        "EV-004"
+      ]
+    },
+    {
+      "id": "T7",
+      "time": "2026-11-17T09:20:00Z",
+      "text": "Engineer begins investigation",
+      "evidence": []
+    }
+  ],
+  "required_evidence": [
+    "EV-001",
+    "EV-002",
+    "EV-003",
+    "EV-004",
+    "EV-005",
+    "EV-006",
+    "EV-007"
+  ]
+}

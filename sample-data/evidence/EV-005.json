@@ -1,0 +1,26 @@
+{
+  "evidence_id": "EV-005",
+  "type": "policy.snapshot",
+  "timestamp": "2026-11-17T08:00:00Z",
+  "actor": "policy-service",
+  "payload": {
+    "agent_id": "agent-opsbot-7",
+    "grants": [
+      {
+        "action": "config.read",
+        "scopes": [
+          "staging",
+          "production"
+        ]
+      },
+      {
+        "action": "config.write",
+        "scopes": [
+          "staging"
+        ]
+      }
+    ]
+  },
+  "signing_key_id": "key-policy-1",
+  "signature": "SLihrvS1bocs1fMUvMpgEggOw3wm19rp/nlbEWponjsw85KRvJUtafdEZUpfEYT6p28iqeFud6AdFI8g8yAkAA=="
+}

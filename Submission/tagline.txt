@@ -1,0 +1,1 @@
+Investigate AI-agent incidents with your hands: a spatial evidence graph that separates verified identity from authorized action.

@@ -1,0 +1,10 @@
+{
+  "agent_id": "agent-opsbot-7",
+  "name": "OpsBot-7",
+  "build": "opsbot@4.2.1",
+  "declared_capabilities": [
+    "config.read",
+    "config.write",
+    "ticket.comment"
+  ]
+}

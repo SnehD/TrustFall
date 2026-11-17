@@ -1,0 +1,16 @@
+{
+  "evidence_id": "EV-003",
+  "type": "config.change",
+  "timestamp": "2026-11-17T09:14:22Z",
+  "actor": "agent-opsbot-7",
+  "payload": {
+    "service": "config-store",
+    "key": "payments.pool.max_connections",
+    "old": 100,
+    "new": 0,
+    "scope": "production",
+    "action": "config.write"
+  },
+  "signing_key_id": "key-audit-1",
+  "signature": "eQKDbo6qbNDp4EbtW72EVMm6ELdctyUD/Aiz+HRitG/TbOc41i7YchwULFrE5Mb5R+YTiU+IJPKlGgw7h7f0BA=="
+}

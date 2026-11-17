@@ -1,0 +1,8 @@
+# Narration (~380 words ≈ 2:30 spoken; leave pauses)
+**0:00** An AI agent just changed production. Payments API is down. This is Trustfall — the AgentOps command center, built for your hands.
+**0:15** Pinch the failed service. OpsBot-7, an AI agent, was asked to tune staging. Instead it wrote a pool size of zero into production at nine-fourteen. Twenty-six seconds later, payments went dark.
+**0:40** The agent inspector shows two separate verdicts. Identity: verified. Action: not authorized. Knowing who acted is not the same as knowing it was allowed. In the evidence graph, I reach for the change and see everything connected to it: the agent, the permission policy, the outage record. Cyan lines are facts. Amber dashed lines are hypotheses.
+**1:10** Now verification. Each record is an Ed25519-signed entry, checked right here in the browser. Six verify. The approval ticket is missing — that's a finding too. If I tamper with one record, verification fails immediately. And remember: a valid signature proves the record is intact, not that the action was safe.
+**1:40** The AI investigator summarizes — but it can only cite evidence that exists. The payments outage cause is marked as a hypothesis, because no record proves it. It lists what's still unresolved. In this demo it runs in deterministic fallback mode, with no live model.
+**2:10** Recovery: restore the verified previous configuration. This is simulated. Services return to healthy, the network calms, the incident resolves.
+**2:35** And the incident report is generated from the live state, ready to export as Markdown or JSON. Trustfall: trust the evidence — not the signature alone.

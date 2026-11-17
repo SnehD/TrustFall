@@ -1,0 +1,14 @@
+{
+  "evidence_id": "EV-002",
+  "type": "agent.identity_attestation",
+  "timestamp": "2026-11-17T09:00:05Z",
+  "actor": "agent-opsbot-7",
+  "payload": {
+    "agent_id": "agent-opsbot-7",
+    "name": "OpsBot-7",
+    "build": "opsbot@4.2.1",
+    "attested_by": "identity-service"
+  },
+  "signing_key_id": "key-audit-1",
+  "signature": "4UIZGYSpfrKHagqgJBQJtd+AycfC8IlpvCxSnq/gQCBIZUracBwxCUs+5efJWM+5YvBNtqCWmm+jDyv1J/01Bw=="
+}

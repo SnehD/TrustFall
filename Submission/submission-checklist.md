@@ -1,0 +1,11 @@
+# Submission Checklist (nothing below is done unless ticked)
+- [ ] Confirm on Devpost rules: is hosted WebXR/PWA accepted, or is an APK on release channel "Competition" required?
+- [ ] Confirm Meta Start program membership
+- [ ] Host web/ on HTTPS and note URL
+- [ ] Test on a Quest or Immersive Web Emulator; fix defects; record real screenshots (Submission/screenshots/quest-*.png)
+- [ ] Record the demo (see Submission/demo/recording-checklist.md), < 3:00
+- [ ] Upload video to YouTube/Vimeo as PUBLIC; copy URL
+- [ ] If required: package APK, upload to release channel "Competition", create judge invite URL
+- [ ] Complete Devpost form: name, tagline (Submission/tagline.txt), description (devpost-description.md), track Productivity, division New Experience
+- [ ] Add team information, links, screenshots
+- [ ] Submit before 2026-11-18 12:00 PM Pacific and save the confirmation

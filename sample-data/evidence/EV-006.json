@@ -1,0 +1,14 @@
+{
+  "evidence_id": "EV-006",
+  "type": "config.snapshot",
+  "timestamp": "2026-11-17T09:10:00Z",
+  "actor": "config-store",
+  "payload": {
+    "service": "config-store",
+    "key": "payments.pool.max_connections",
+    "value": 100,
+    "scope": "production"
+  },
+  "signing_key_id": "key-audit-1",
+  "signature": "R2WYrnCU13f7WA5FcjbmPWRAjlutKoQJLPTXZ+8am7/rg+Ouc6p9gtFWJaeV4nx1NbqQGo3g13a8lXhYxp5OBw=="
+}

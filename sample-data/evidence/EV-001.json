@@ -1,0 +1,13 @@
+{
+  "evidence_id": "EV-001",
+  "type": "agent.task_assigned",
+  "timestamp": "2026-11-17T09:00:00Z",
+  "actor": "agent-opsbot-7",
+  "payload": {
+    "task": "Tune connection pool for payments-api in STAGING",
+    "requested_by": "eng-lead-12",
+    "scope": "staging"
+  },
+  "signing_key_id": "key-audit-1",
+  "signature": "QzMRMjlNYbUKzaTrYHx8Zu4pDMJeyxVQtSZJcYdFv8g2S5aj9I5lTV7H5cewAbWt9rV6T8MYV5J6PRMChGpABg=="
+}

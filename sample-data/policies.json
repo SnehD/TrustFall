@@ -1,0 +1,19 @@
+{
+  "grants": {
+    "agent-opsbot-7": [
+      {
+        "action": "config.read",
+        "scopes": [
+          "staging",
+          "production"
+        ]
+      },
+      {
+        "action": "config.write",
+        "scopes": [
+          "staging"
+        ]
+      }
+    ]
+  }
+}

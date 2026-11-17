@@ -1,0 +1,521 @@
+{
+  "incident": {
+    "id": "INC-2026-1117-001",
+    "title": "UNAUTHORIZED AGENT CONFIGURATION CHANGE"
+  },
+  "services": {
+    "edge-gateway": {
+      "label": "Edge Gateway",
+      "depends_on": [
+        "auth-service",
+        "payments-api",
+        "orders-service"
+      ]
+    },
+    "auth-service": {
+      "label": "Auth Service",
+      "depends_on": []
+    },
+    "config-store": {
+      "label": "Config Store",
+      "depends_on": []
+    },
+    "payments-api": {
+      "label": "Payments API",
+      "depends_on": [
+        "config-store"
+      ]
+    },
+    "orders-service": {
+      "label": "Orders Service",
+      "depends_on": [
+        "payments-api"
+      ]
+    },
+    "analytics": {
+      "label": "Analytics",
+      "depends_on": [
+        "orders-service"
+      ]
+    }
+  },
+  "initial_health": {
+    "edge-gateway": "degraded",
+    "auth-service": "healthy",
+    "config-store": "healthy",
+    "payments-api": "failed",
+    "orders-service": "degraded",
+    "analytics": "degraded"
+  },
+  "timeline": [
+    {
+      "id": "T1",
+      "time": "2026-11-17T09:00:00Z",
+      "text": "AI agent OpsBot-7 receives a staging tuning task",
+      "evidence": [
+        "EV-001"
+      ]
+    },
+    {
+      "id": "T2",
+      "time": "2026-11-17T09:00:05Z",
+      "text": "Agent identity recorded and attested",
+      "evidence": [
+        "EV-002"
+      ]
+    },
+    {
+      "id": "T3",
+      "time": "2026-11-17T09:14:22Z",
+      "text": "Agent writes payments.pool.max_connections=0 in PRODUCTION",
+      "evidence": [
+        "EV-003"
+      ]
+    },
+    {
+      "id": "T4",
+      "time": "2026-11-17T09:14:22Z",
+      "text": "Change exceeds agent's granted scope (staging only)",
+      "evidence": [
+        "EV-003",
+        "EV-005"
+      ]
+    },
+    {
+      "id": "T5",
+      "time": "2026-11-17T09:14:48Z",
+      "text": "payments-api becomes unavailable",
+      "evidence": [
+        "EV-004"
+      ]
+    },
+    {
+      "id": "T6",
+      "time": "2026-11-17T09:14:51Z",
+      "text": "Monitoring records the outage",
+      "evidence": [
+        "EV-004"
+      ]
+    },
+    {
+      "id": "T7",
+      "time": "2026-11-17T09:20:00Z",
+      "text": "Engineer begins investigation",
+      "evidence": []
+    }
+  ],
+  "agent": {
+    "agent_id": "agent-opsbot-7",
+    "name": "OpsBot-7",
+    "capabilities": [
+      "config.read",
+      "config.write",
+      "ticket.comment"
+    ],
+    "grants": [
+      {
+        "action": "config.read",
+        "scopes": [
+          "staging",
+          "production"
+        ]
+      },
+      {
+        "action": "config.write",
+        "scopes": [
+          "staging"
+        ]
+      }
+    ]
+  },
+  "records": [
+    {
+      "evidence_id": "EV-001",
+      "type": "agent.task_assigned",
+      "timestamp": "2026-11-17T09:00:00Z",
+      "actor": "agent-opsbot-7",
+      "payload": {
+        "task": "Tune connection pool for payments-api in STAGING",
+        "requested_by": "eng-lead-12",
+        "scope": "staging"
+      },
+      "signing_key_id": "key-audit-1",
+      "signature": "QzMRMjlNYbUKzaTrYHx8Zu4pDMJeyxVQtSZJcYdFv8g2S5aj9I5lTV7H5cewAbWt9rV6T8MYV5J6PRMChGpABg=="
+    },
+    {
+      "evidence_id": "EV-002",
+      "type": "agent.identity_attestation",
+      "timestamp": "2026-11-17T09:00:05Z",
+      "actor": "agent-opsbot-7",
+      "payload": {
+        "agent_id": "agent-opsbot-7",
+        "name": "OpsBot-7",
+        "build": "opsbot@4.2.1",
+        "attested_by": "identity-service"
+      },
+      "signing_key_id": "key-audit-1",
+      "signature": "4UIZGYSpfrKHagqgJBQJtd+AycfC8IlpvCxSnq/gQCBIZUracBwxCUs+5efJWM+5YvBNtqCWmm+jDyv1J/01Bw=="
+    },
+    {
+      "evidence_id": "EV-003",
+      "type": "config.change",
+      "timestamp": "2026-11-17T09:14:22Z",
+      "actor": "agent-opsbot-7",
+      "payload": {
+        "service": "config-store",
+        "key": "payments.pool.max_connections",
+        "old": 100,
+        "new": 0,
+        "scope": "production",
+        "action": "config.write"
+      },
+      "signing_key_id": "key-audit-1",
+      "signature": "eQKDbo6qbNDp4EbtW72EVMm6ELdctyUD/Aiz+HRitG/TbOc41i7YchwULFrE5Mb5R+YTiU+IJPKlGgw7h7f0BA=="
+    },
+    {
+      "evidence_id": "EV-004",
+      "type": "monitor.outage",
+      "timestamp": "2026-11-17T09:14:51Z",
+      "actor": "monitoring",
+      "payload": {
+        "service": "payments-api",
+        "state": "failed",
+        "symptom": "connection pool size 0; requests rejected",
+        "since": "2026-11-17T09:14:48Z"
+      },
+      "signing_key_id": "key-monitor-1",
+      "signature": "47kECIlBwB5cSvjrhAFIy+1F9oTOj9CN2mbNTdD+Nd2qn10O9QhDRyoy7fmsZOLXCRMcF8mUKfNqaQxNyz9LAg=="
+    },
+    {
+      "evidence_id": "EV-005",
+      "type": "policy.snapshot",
+      "timestamp": "2026-11-17T08:00:00Z",
+      "actor": "policy-service",
+      "payload": {
+        "agent_id": "agent-opsbot-7",
+        "grants": [
+          {
+            "action": "config.read",
+            "scopes": [
+              "staging",
+              "production"
+            ]
+          },
+          {
+            "action": "config.write",
+            "scopes": [
+              "staging"
+            ]
+          }
+        ]
+      },
+      "signing_key_id": "key-policy-1",
+      "signature": "SLihrvS1bocs1fMUvMpgEggOw3wm19rp/nlbEWponjsw85KRvJUtafdEZUpfEYT6p28iqeFud6AdFI8g8yAkAA=="
+    },
+    {
+      "evidence_id": "EV-006",
+      "type": "config.snapshot",
+      "timestamp": "2026-11-17T09:10:00Z",
+      "actor": "config-store",
+      "payload": {
+        "service": "config-store",
+        "key": "payments.pool.max_connections",
+        "value": 100,
+        "scope": "production"
+      },
+      "signing_key_id": "key-audit-1",
+      "signature": "R2WYrnCU13f7WA5FcjbmPWRAjlutKoQJLPTXZ+8am7/rg+Ouc6p9gtFWJaeV4nx1NbqQGo3g13a8lXhYxp5OBw=="
+    }
+  ],
+  "public_keys": {
+    "key-audit-1": "6SAwJejQwr6DjPhjMYJHPDqStsPpygP8CLS6aoJiM7Q=",
+    "key-monitor-1": "Rrjatuulqs8Nsm0NYn0Oe/9yo8Cd2M/I0Ae+AGEUBsc=",
+    "key-policy-1": "3fK+YAogNBFmJLstS0zf3imgcd4SjwC0nwJW/xHBkzk="
+  },
+  "required_evidence": [
+    "EV-001",
+    "EV-002",
+    "EV-003",
+    "EV-004",
+    "EV-005",
+    "EV-006",
+    "EV-007"
+  ],
+  "verification_precomputed": {
+    "EV-001": {
+      "evidence_id": "EV-001",
+      "status": "VERIFIED",
+      "reason": "signature valid for configured key (says nothing about authorization)"
+    },
+    "EV-002": {
+      "evidence_id": "EV-002",
+      "status": "VERIFIED",
+      "reason": "signature valid for configured key (says nothing about authorization)"
+    },
+    "EV-003": {
+      "evidence_id": "EV-003",
+      "status": "VERIFIED",
+      "reason": "signature valid for configured key (says nothing about authorization)"
+    },
+    "EV-004": {
+      "evidence_id": "EV-004",
+      "status": "VERIFIED",
+      "reason": "signature valid for configured key (says nothing about authorization)"
+    },
+    "EV-005": {
+      "evidence_id": "EV-005",
+      "status": "VERIFIED",
+      "reason": "signature valid for configured key (says nothing about authorization)"
+    },
+    "EV-006": {
+      "evidence_id": "EV-006",
+      "status": "VERIFIED",
+      "reason": "signature valid for configured key (says nothing about authorization)"
+    },
+    "EV-007": {
+      "evidence_id": "EV-007",
+      "status": "MISSING",
+      "reason": "required evidence record not available"
+    }
+  },
+  "authorization_precomputed": {
+    "identity_verified": true,
+    "authorized": false,
+    "reason": "no grant for config.write on scope 'production' (identity verification is irrelevant to authorization)"
+  },
+  "investigation": {
+    "suspected_root_cause": "An unauthorized production config write by OpsBot-7 (pool size 0) likely exhausted payments-api's connection pool.",
+    "findings": [
+      {
+        "statement": "OpsBot-7 wrote max_connections=0 in production config-store.",
+        "kind": "fact",
+        "evidence_ids": [
+          "EV-003"
+        ]
+      },
+      {
+        "statement": "OpsBot-7's grants allow config.write only on staging.",
+        "kind": "fact",
+        "evidence_ids": [
+          "EV-005"
+        ]
+      },
+      {
+        "statement": "payments-api was recorded as failed 26 seconds after the change.",
+        "kind": "fact",
+        "evidence_ids": [
+          "EV-003",
+          "EV-004"
+        ]
+      },
+      {
+        "statement": "The zero pool size caused the payments-api outage (timing and dependency support this; no record directly proves causation).",
+        "kind": "hypothesis",
+        "evidence_ids": [
+          "EV-003",
+          "EV-004"
+        ]
+      }
+    ],
+    "supporting_evidence": [
+      "EV-003",
+      "EV-004",
+      "EV-005"
+    ],
+    "affected_components": [
+      "config-store",
+      "payments-api",
+      "orders-service",
+      "edge-gateway",
+      "analytics"
+    ],
+    "investigation_steps": [
+      "Confirm payments-api logs show pool-size-0 errors",
+      "Find who requested production access for OpsBot-7",
+      "Review other changes by OpsBot-7"
+    ],
+    "suggested_recovery": "Restore max_connections=100 from verified snapshot EV-006, then review OpsBot-7's scopes.",
+    "confidence": "medium",
+    "confidence_explanation": "Facts are signature-verified; causation is a hypothesis; approval record is missing.",
+    "unresolved_questions": [
+      "Evidence EV-007 is missing: was the change approved?",
+      "Why did a staging task touch production?"
+    ],
+    "source": "deterministic-fallback"
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "agent",
+        "label": "OpsBot-7",
+        "kind": "agent",
+        "evidence": [
+          "EV-001",
+          "EV-002"
+        ],
+        "detail": "AI agent agent-opsbot-7. Identity attested (EV-002)."
+      },
+      {
+        "id": "change",
+        "label": "Config change",
+        "kind": "change",
+        "evidence": [
+          "EV-003"
+        ],
+        "detail": "payments.pool.max_connections 100 -> 0 in PRODUCTION."
+      },
+      {
+        "id": "event",
+        "label": "Outage record",
+        "kind": "event",
+        "evidence": [
+          "EV-004"
+        ],
+        "detail": "Monitoring: payments-api failed at 09:14:48Z."
+      },
+      {
+        "id": "service",
+        "label": "Payments API",
+        "kind": "service",
+        "evidence": [
+          "EV-004"
+        ],
+        "detail": "Depends on config-store."
+      },
+      {
+        "id": "policy",
+        "label": "Permission policy",
+        "kind": "policy",
+        "evidence": [
+          "EV-005"
+        ],
+        "detail": "config.write granted for STAGING only."
+      },
+      {
+        "id": "verify",
+        "label": "Verification",
+        "kind": "verification",
+        "evidence": [
+          "EV-002",
+          "EV-003",
+          "EV-004",
+          "EV-005"
+        ],
+        "detail": "Signatures VERIFIED. This proves integrity, not authorization."
+      },
+      {
+        "id": "recovery",
+        "label": "Recovery action",
+        "kind": "recovery",
+        "evidence": [
+          "EV-006"
+        ],
+        "detail": "Restore max_connections=100 from signed snapshot EV-006."
+      }
+    ],
+    "edges": [
+      {
+        "from": "agent",
+        "to": "change",
+        "kind": "fact",
+        "why": "EV-003 actor is agent-opsbot-7.",
+        "evidence": [
+          "EV-003"
+        ]
+      },
+      {
+        "from": "change",
+        "to": "policy",
+        "kind": "fact",
+        "why": "Change scope 'production' is outside granted scope 'staging' (EV-005).",
+        "evidence": [
+          "EV-003",
+          "EV-005"
+        ]
+      },
+      {
+        "from": "change",
+        "to": "event",
+        "kind": "hypothesis",
+        "why": "Outage began 26s after the change and payments-api depends on the changed key. Timing and dependency suggest causation; no record proves it.",
+        "evidence": [
+          "EV-003",
+          "EV-004"
+        ]
+      },
+      {
+        "from": "event",
+        "to": "service",
+        "kind": "fact",
+        "why": "EV-004 reports payments-api failed.",
+        "evidence": [
+          "EV-004"
+        ]
+      },
+      {
+        "from": "verify",
+        "to": "agent",
+        "kind": "fact",
+        "why": "EV-002 signature verifies: identity VERIFIED (not the same as authorized).",
+        "evidence": [
+          "EV-002"
+        ]
+      },
+      {
+        "from": "verify",
+        "to": "change",
+        "kind": "fact",
+        "why": "EV-003 signature verifies: record is untampered.",
+        "evidence": [
+          "EV-003"
+        ]
+      },
+      {
+        "from": "recovery",
+        "to": "service",
+        "kind": "hypothesis",
+        "why": "Restoring the verified snapshot should recover payments-api.",
+        "evidence": [
+          "EV-006"
+        ]
+      },
+      {
+        "from": "recovery",
+        "to": "change",
+        "kind": "fact",
+        "why": "EV-006 is the value before the change.",
+        "evidence": [
+          "EV-006",
+          "EV-003"
+        ]
+      }
+    ]
+  },
+  "recovery_options": {
+    "restore_previous_config": {
+      "label": "Restore previous configuration",
+      "consequence": "Re-applies max_connections=100 from signed snapshot EV-006. payments-api and dependents recover. Agent keeps its grants."
+    },
+    "isolate_agent": {
+      "label": "Isolate the problematic agent",
+      "consequence": "Revokes OpsBot-7's write access so it cannot change more config. The outage is NOT fixed by itself."
+    },
+    "continue_investigation": {
+      "label": "Continue investigation without recovery",
+      "consequence": "No change. The outage continues; customer impact persists."
+    }
+  },
+  "tamper_demo": {
+    "description": "EV-003 with scope edited production->staging, verified by the Python engine",
+    "result": {
+      "evidence_id": "EV-003",
+      "status": "INVALID",
+      "reason": "signature does not match record content"
+    }
+  },
+  "connector": {
+    "name": "jenkins",
+    "state": "not_configured",
+    "verified_live": false
+  }
+}
